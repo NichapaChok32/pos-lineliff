@@ -1,0 +1,48 @@
+#Navbar {
+  background-color: #ffdeca;
+  .icon-menu {
+    font-size: 24px;
+    line-height: 24px;
+    color: #212b36;
+  }
+  .table-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #14142b;
+  }
+  .menuCall {
+    min-width: 179px;
+  }
+  .icon-nav {
+    font-size: 24px;
+    line-height: 24px;
+    color: #ea8063;
+  }
+  .btnLang {
+    display: flex;
+    padding: 0px 4px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    background: #fff;
+    .lang-div {
+      display: flex;
+      height: 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      .icon-lang {
+        font-size: 20px;
+        line-height: 24px;
+        padding-right: 4px;
+      }
+      .lang-menu {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        color: #ea8063;
+      }
+    }
+  }
+}

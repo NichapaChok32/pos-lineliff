@@ -1,6 +1,12 @@
 import type { AppProps } from "next/app";
 import type { liff } from "@line/liff";
 import { useState, useEffect } from "react";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+
+import "../styles/globals.css";
+import "../styles/pos-icon.css";
 
 const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
 

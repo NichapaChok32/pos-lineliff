@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'pos';
+  src:  url('../assets/fonts/pos.eot?z5nahz');
+  src:  url('../assets/fonts/pos.eot?z5nahz#iefix') format('embedded-opentype'),
+    url('../assets/fonts/pos.ttf?z5nahz') format('truetype'),
+    url('../assets/fonts/pos.woff?z5nahz') format('woff'),
+    url('../assets/fonts/pos.svg?z5nahz#pos') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="pos-"], [class*=" pos-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'pos' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pos-xmark:before {
+  content: "\e910";
+}
+.pos-chevron-up:before {
+  content: "\e90f";
+}
+.pos-remove:before {
+  content: "\e90d";
+}
+.pos-add:before {
+  content: "\e90e";
+}
+.pos-check:before {
+  content: "\e90c";
+}
+.pos-search:before {
+  content: "\e909";
+}
+.pos-delete-left:before {
+  content: "\e906";
+}
+.pos-bell:before {
+  content: "\e900";
+}
+.pos-bell-round:before {
+  content: "\e901";
+}
+.pos-globe:before {
+  content: "\e908";
+}
+.pos-filter:before {
+  content: "\e907";
+}
+.pos-document:before {
+  content: "\e905";
+}
+.pos-credit-card:before {
+  content: "\e903";
+}
+.pos-bin:before {
+  content: "\e902";
+}
+.pos-circle-xmark:before {
+  content: "\e904";
+  color: #d5d5dc;
+}
+.pos-hamburger:before {
+  content: "\e90a";
+}
+.pos-left-arrow:before {
+  content: "\e90b";
+}
