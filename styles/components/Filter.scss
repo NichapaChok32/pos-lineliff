@@ -1,0 +1,17 @@
+#Filter {
+  .main-grid {
+    padding: 16px;
+    .filter-grid {
+      padding: 0;
+      .btnIcon {
+        padding: 0;
+        margin-right: 16px;
+        .icon-menu {
+          font-size: 17px;
+          line-height: 17px;
+          color: #171725;
+        }
+      }
+    }
+  }
+}
