@@ -26,6 +26,14 @@ export default function Orders() {
             placeholder="Search menu"
             className="txtSearch"
             InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <i
+                    className="pos-search h-6 w-6 icon-search"
+                    aria-hidden="true"
+                  />
+                </InputAdornment>
+              ),
               endAdornment: (
                 <InputAdornment
                   position="end"

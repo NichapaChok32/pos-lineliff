@@ -15,6 +15,14 @@
         input {
           height: 46px;
           padding: 0;
+          &::placeholder {
+            color: #92929d;
+            font-family: poppins, system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.2px;
+          }
         }
         .MuiInputAdornment-root {
           .icon-search {
