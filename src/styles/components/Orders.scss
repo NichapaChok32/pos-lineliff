@@ -1,8 +1,19 @@
 #Filter {
   .main-grid {
     padding: 16px;
+    flex-wrap: nowrap;
+    column-gap: 16px;
     .filter-grid {
       padding: 0;
+      display: flex;
+      align-items: center;
+      &.categories-grid {
+        min-height: 100%;
+        overflow: hidden;
+        overflow-x: scroll;
+        column-gap: 8px;
+        display: flex;
+      }
       .btnIcon {
         padding: 0;
         margin-right: 16px;
@@ -10,6 +21,26 @@
           font-size: 17px;
           line-height: 17px;
           color: #171725;
+        }
+      }
+      .btnCategory {
+        min-width: fit-content;
+        max-height: 46px;
+        padding: 8px 20px;
+        border: 1px solid #ededed;
+        border-radius: 16px;
+        color: #000;
+        font-family: poppins, system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        text-transform: capitalize;
+        &.btnActive {
+          border: 1px solid #ea8063;
+          background: rgba(234, 128, 99, 0.1);
+        }
+        .all {
+          margin-right: 8px;
         }
       }
     }

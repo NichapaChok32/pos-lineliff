@@ -1,8 +1,6 @@
 import type { AppProps } from "next/app";
 import type { liff } from "@line/liff";
 import { useState, useEffect } from "react";
-import { Provider } from "react-redux";
-import { store } from "../src/stores/store";
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
@@ -12,7 +10,7 @@ import "../src/styles/pos-icon.css";
 
 const liffId = "2000165056-VKqez8AJ";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [liffObject, setLiffObject] = useState<typeof liff | null>(null);
   const [liffError, setLiffError] = useState<string | null>(null);
   useEffect(() => {
@@ -37,11 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liff = liffObject;
   pageProps.liffError = liffError;
 
-  return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
