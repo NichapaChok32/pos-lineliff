@@ -1,0 +1,54 @@
+#Menus {
+  #Filter {
+    overflow: hidden;
+    .mainGrid {
+      display: flex;
+      padding: 16px;
+      flex-wrap: nowrap;
+      column-gap: 16px;
+      .formDiv {
+        width: 100%;
+        .iconSearch {
+          top: 10px;
+          left: 16px;
+          width: 24px;
+          height: 24px;
+          font-size: 24px;
+          line-height: 24px;
+          color: #92929d;
+        }
+        .iconClose {
+          top: 12px;
+          right: 16px;
+          width: 24px;
+          height: 24px;
+          font-size: 24px;
+          line-height: 24px;
+          color: #92929d;
+        }
+        .txtSearch {
+          width: 100%;
+          height: 46px;
+          padding: 7px 48px;
+          border-radius: 8px;
+          border: 1px solid #ea8063;
+          outline-offset: 0;
+        }
+      }
+      .filterGrid {
+        padding: 0;
+        display: flex;
+        column-gap: 8px;
+        min-width: fit-content;
+        align-items: center;
+        .iconFilter {
+          width: 24px;
+          height: 24px;
+          font-size: 24px;
+          line-height: 24px;
+          color: #171725;
+        }
+      }
+    }
+  }
+}

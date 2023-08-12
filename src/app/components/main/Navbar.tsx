@@ -19,7 +19,7 @@ export default function Navbar() {
     <Disclosure as="nav" id="Navbar">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center">
                 {/* Mobile menu button*/}
@@ -27,12 +27,12 @@ export default function Navbar() {
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <i
-                      className="pos-xmark block h-6 w-6 icon-menu"
+                      className="pos-xmark block h-6 w-6 iconMenu"
                       aria-hidden="true"
                     />
                   ) : (
                     <i
-                      className="pos-hamburger block h-6 w-6 icon-menu"
+                      className="pos-hamburger block h-6 w-6 iconMenu"
                       aria-hidden="true"
                     />
                   )}
@@ -40,16 +40,16 @@ export default function Navbar() {
               </div>
               <div className="flex flex-1 items-left justify-start sm:items-stretch sm:justify-start ml-15">
                 <div className="flex flex-shrink-0 items-left">
-                  <span className="table-name">Table T01</span>
+                  <span className="tableName">Table T01</span>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="rounded-full p-2 focus:outline-none">
-                      <div className="lang-div">
+                      <div className="langDiv">
                         <i
-                          className="pos-bell h-6 w-6 icon-nav"
+                          className="pos-bell h-6 w-6 iconNav"
                           aria-hidden="true"
                         />
                       </div>
@@ -101,7 +101,7 @@ export default function Navbar() {
                 >
                   <span className="sr-only">Orders</span>
                   <i
-                    className="pos-document h-6 w-6 icon-nav"
+                    className="pos-document h-6 w-6 iconNav"
                     aria-hidden="true"
                   />
                 </button>
@@ -112,10 +112,10 @@ export default function Navbar() {
                     <Menu.Button className="flex rounded-full text-sm focus:outline-none btnLang">
                       <div className="lang-div">
                         <i
-                          className="pos-globe h-6 w-6 icon-nav icon-lang"
+                          className="pos-globe h-6 w-6 icon-nav iconLang"
                           aria-hidden="true"
                         />
-                        <span className="lang-menu">TH</span>
+                        <span className="langMenu">TH</span>
                       </div>
                     </Menu.Button>
                   </div>

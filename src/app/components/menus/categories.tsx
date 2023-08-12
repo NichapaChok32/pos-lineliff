@@ -3,9 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
-import Button from "@mui/material/Button";
-import "../../../styles/components/Orders.scss";
+import "../../../styles/components/Categories.scss";
 
 interface SubCategories {
   id: number;
@@ -26,67 +24,73 @@ interface Categories {
 
 const token = localStorage.getItem("accessToken");
 
-const fetcher = (url: string) =>
-  axios
-    .get(url, { headers: { Authorization: "Bearer " + token } })
-    .then((r) => r.data);
-
 export default function Categories() {
   const { data, error, isLoading } = useSWR(
     "http://35.197.145.54:3000/categories",
-    fetcher
+    (url: string) =>
+      axios
+        .get(url, { headers: { Authorization: "Bearer " + token } })
+        .then((r) => r.data)
   );
   const [category, setCategory] = useState("all");
   function handleClick(value: string) {
     setCategory(value);
   }
   return (
-    <Grid className="filter-grid categories-grid">
+    <div id="Categories">
       {category === "all" ? (
-        <Button className="btnCategory btnActive">
-          <Image
-            src="/all.svg"
-            alt="Category All"
-            className="all"
-            width={30}
-            height={30}
-            priority
-          />
-          All
-        </Button>
+        <div className="categoriesGrid">
+          <button className="btnCategory btnActive">
+            <Image
+              src="/all.svg"
+              alt="Category All"
+              className="all"
+              width={30}
+              height={30}
+              priority
+            />
+            All
+          </button>
+        </div>
       ) : (
-        <Button className="btnCategory">
-          <Image
-            src="/all.svg"
-            alt="Category All"
-            className="all"
-            width={30}
-            height={30}
-            priority
-            onClick={() => handleClick("all")}
-          />
-          All
-        </Button>
+        <div className="categoriesGrid">
+          <button className="btnCategory">
+            <Image
+              src="/all.svg"
+              alt="Category All"
+              className="all"
+              width={30}
+              height={30}
+              priority
+              onClick={() => handleClick("all")}
+            />
+            All
+          </button>
+        </div>
       )}
       {data?.map((cat: Categories) => {
         return category === cat.name ? (
-          <Button
-            className="btnCategory btnActive"
-            key={cat.id}
-            onClick={() => handleClick(cat.name)}
-          >
-            {cat.name}
-          </Button>
+          <div className="categoriesGrid">
+            <button
+              className="btnCategory btnActive"
+              key={cat.id}
+              onClick={() => handleClick(cat.name)}
+            >
+              {cat.name}
+            </button>
+          </div>
         ) : (
-          <Button
-            className="btnCategory"
-            key={cat.id}
-            onClick={() => handleClick(cat.name)}
-          >
-            {cat.name}
-          </Button>
+          <div className="categoriesGrid">
+            <button
+              className="btnCategory"
+              key={cat.id}
+              onClick={() => handleClick(cat.name)}
+            >
+              {cat.name}
+            </button>
+          </div>
         );
       })}
-    </Grid>
+    </div>
   );
 }
