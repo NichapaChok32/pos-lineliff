@@ -227,7 +227,7 @@ export default function MenuLists(props: Props) {
             priority
           />
         </div>
-        <div className="menuCols">
+        <div className="menuCols menuDescCol">
           <label className="menuName">{item.name}</label>
           <p className="menuParagraph">{item.detail}</p>
           <div className="menuGrid menuPriceDiv">

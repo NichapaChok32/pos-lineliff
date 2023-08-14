@@ -110,7 +110,7 @@ export default function Navbar() {
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full text-sm focus:outline-none btnLang">
-                      <div className="lang-div">
+                      <div className="langDiv">
                         <i
                           className="pos-globe h-6 w-6 icon-nav iconLang"
                           aria-hidden="true"
@@ -128,7 +128,7 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-1 z-10 w-50 origin-top-right rounded-md bg-white py-1 shadow-lg ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-1 z-10 w-50 origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a

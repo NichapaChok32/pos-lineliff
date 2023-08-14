@@ -8,13 +8,17 @@
       justify-content: space-between;
       align-items: center;
       align-self: stretch;
-      margin-top: auto;
+      margin-top: 16px;
       max-height: fit-content;
     }
     .menuCols {
       &.menuImgCol {
         min-width: 100px;
         min-height: 100px;
+      }
+      &.menuDescCol {
+        margin-left: auto;
+        min-width: 233px;
       }
       .foodImg {
         border-radius: 8px;
@@ -46,18 +50,19 @@
         line-height: 24px;
       }
       .btnAddMenu {
+        display: flex;
+        align-items: center;
+        text-align: center;
         width: 24px;
         height: 24px;
         padding: 4px;
         background-color: #ffdeca;
         border-radius: 4px;
         .iconAdd {
-          display: flex;
-          align-items: center;
-          width: 24px;
-          height: 24px;
-          font-size: 24px;
-          line-height: 24px;
+          width: 16px;
+          height: 16px;
+          font-size: 16px;
+          line-height: 16px;
           color: #ea8063;
         }
       }

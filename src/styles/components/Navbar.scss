@@ -21,6 +21,7 @@
   }
   .btnLang {
     display: flex;
+    height: 32px;
     padding: 0px 4px;
     align-items: center;
     align-self: stretch;
@@ -36,6 +37,7 @@
         font-size: 20px;
         line-height: 24px;
         padding-right: 4px;
+        color: #ea8063;
       }
       .langMenu {
         font-size: 14px;
