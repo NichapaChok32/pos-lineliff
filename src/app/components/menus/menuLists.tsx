@@ -5,11 +5,10 @@ import "../../../styles/components/MenuList.scss";
 
 interface Props {
   item: MenusLists;
-  category: string;
 }
 
 export default function MenuLists(props: Props) {
-  const { item, category } = props;
+  const { item } = props;
 
   const calculatePriceVat = (price: number, vat: number) => {
     const percent = vat / 100;

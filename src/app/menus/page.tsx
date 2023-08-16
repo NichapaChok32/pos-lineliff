@@ -1,21 +1,32 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useGetMenulistsQuery } from "@/services/menulists";
+import { MenuCategories } from "@/interfaces/menus/MenuCategories";
 import CategoriesFilter from "../components/menus/categoriesFilter";
 import MenuLists from "../components/menus/menuLists";
 import "../../styles/components/Menus.scss";
-interface Props {
-  category: string;
-}
 
-export default function Orders(props: Props) {
-  const { category } = props;
+export default function Orders() {
+  const [category, setCategoryType] = useState("all");
   const { data, error, isLoading } = useGetMenulistsQuery("");
-  const menuLists = data;
-  const menusByCategories = () => {
-    if (category === "all") {
+  const [menuAll, setMenuAll] = useState<MenuCategories[]>([]);
+  const changeMenuLists = (event: any) => {
+    setCategoryType(event);
+    let menus;
+    if (event === "all") {
+      menus = data;
+    } else {
+      menus = data.filter(
+        (m: any) => m.categories && m.categories.name === event
+      );
     }
+    setMenuAll(menus);
   };
+  useEffect(() => {
+    if (category === "all") {
+      setMenuAll(data);
+    }
+  }, [data]);
   const searchRef = useRef(
     null
   ) as React.MutableRefObject<HTMLInputElement | null>;
@@ -59,21 +70,17 @@ export default function Orders(props: Props) {
                   aria-hidden="true"
                 />
               </div>
-              <CategoriesFilter></CategoriesFilter>
+              <CategoriesFilter
+                onCategoryChange={(event) => changeMenuLists(event)}
+              />
             </>
           )}
         </header>
       </div>
       <div>
-        {Array.isArray(menuLists) ? (
-          menuLists?.map((m: any) => {
-            return (
-              <MenuLists item={m} key={m.id} category={category}></MenuLists>
-            );
-          })
-        ) : (
-          <></>
-        )}
+        {menuAll?.map((m: any) => {
+          return <MenuLists item={m} key={m.id}></MenuLists>;
+        })}
       </div>
     </div>
   );

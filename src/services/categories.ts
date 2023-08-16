@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const categoriesApi = createApi({
   reducerPath: "categoriesApi",
   // Set the baseUrl for every endpoint below
-  baseQuery: fetchBaseQuery({ baseUrl: "http://35.197.145.54:3000" }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASEURL }),
   endpoints: (builder) => ({
     getCategories: builder.query({
       query: () => ({

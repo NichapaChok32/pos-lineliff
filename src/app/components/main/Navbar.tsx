@@ -16,29 +16,29 @@ function classNames(...classes: any[]) {
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" id="Navbar">
+    <Disclosure id="Navbar" as="nav">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
+          <div className="max-w-full px-2 mx-auto sm:px-6 lg:px-8">
+            <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 focus:outline-none">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <i
-                      className="pos-xmark block h-6 w-6 iconMenu"
+                      className="block w-6 h-6 pos-xmark iconMenu"
                       aria-hidden="true"
                     />
                   ) : (
                     <i
-                      className="pos-hamburger block h-6 w-6 iconMenu"
+                      className="block w-6 h-6 pos-hamburger iconMenu"
                       aria-hidden="true"
                     />
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-left justify-start sm:items-stretch sm:justify-start ml-15">
+              <div className="flex justify-start flex-1 items-left sm:items-stretch sm:justify-start ml-15">
                 <div className="flex flex-shrink-0 items-left">
                   <span className="tableName">Table T01</span>
                 </div>
@@ -46,10 +46,10 @@ export default function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="rounded-full p-2 focus:outline-none">
+                    <Menu.Button className="p-2 rounded-full focus:outline-none">
                       <div className="langDiv">
                         <i
-                          className="pos-bell h-6 w-6 iconNav"
+                          className="w-6 h-6 pos-bell iconNav"
                           aria-hidden="true"
                         />
                       </div>
@@ -64,7 +64,7 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-1 z-10 origin-top-right rounded-md bg-white py-1 shadow-lg ring-opacity-5 focus:outline-none menuCall">
+                    <Menu.Items className="absolute z-10 py-1 origin-top-right bg-white rounded-md shadow-lg right-1 ring-opacity-5 focus:outline-none menuCall">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -97,11 +97,11 @@ export default function Navbar() {
 
                 <button
                   type="button"
-                  className="rounded-full p-2 focus:outline-none"
+                  className="p-2 rounded-full focus:outline-none"
                 >
                   <span className="sr-only">Orders</span>
                   <i
-                    className="pos-document h-6 w-6 iconNav"
+                    className="w-6 h-6 pos-document iconNav"
                     aria-hidden="true"
                   />
                 </button>
@@ -109,10 +109,10 @@ export default function Navbar() {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex rounded-full text-sm focus:outline-none btnLang">
+                    <Menu.Button className="flex text-sm rounded-full focus:outline-none btnLang">
                       <div className="langDiv">
                         <i
-                          className="pos-globe h-6 w-6 icon-nav iconLang"
+                          className="w-6 h-6 pos-globe icon-nav iconLang"
                           aria-hidden="true"
                         />
                         <span className="langMenu">TH</span>
@@ -128,7 +128,7 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-1 z-10 w-50 origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute z-10 origin-top-right bg-white rounded-md shadow-lg right-1 w-50 ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -163,7 +163,7 @@ export default function Navbar() {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}

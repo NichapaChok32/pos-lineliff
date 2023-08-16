@@ -1,16 +1,27 @@
 "use client";
 import Image from "next/image";
 import "../../../styles/components/Categories.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { RootState } from "../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategoriesLists } from "@/features/menuCategories/categoriesSlice";
 import { useGetCategoriesQuery } from "@/services/categories";
 import { Categories } from "@/interfaces/menus/Categories";
 
-export default function CategoriesFilter() {
-  const { data, error, isLoading } = useGetCategoriesQuery("");
-  console.log(data);
+type Props = {
+  onCategoryChange?: (newType: string) => void;
+};
+
+export default function CategoriesFilter({ onCategoryChange }: Props) {
   const [category, setCategory] = useState("all");
+  const dispatch = useDispatch();
+  const { data, error, isLoading } = useGetCategoriesQuery("");
+  useEffect(() => {
+    dispatch(setCategoriesLists(data));
+  }, [data]);
   function handleClick(value: string) {
     setCategory(value);
+    onCategoryChange?.(value);
   }
   return (
     <div id="Categories">
@@ -33,20 +44,26 @@ export default function CategoriesFilter() {
           All
         </button>
       </div>
-      {data?.map((cat: Categories, index: number) => {
-        return (
-          <div key={index} className="categoriesGrid">
-            <button
-              className={
-                category === cat.name ? "btnActive btnCategory" : "btnCategory"
-              }
-              onClick={() => handleClick(cat.name)}
-            >
-              {cat.name}
-            </button>
-          </div>
-        );
-      })}
+      {!isLoading && data ? (
+        data?.map((cat: Categories, index: number) => {
+          return (
+            <div key={index} className="categoriesGrid">
+              <button
+                className={
+                  category === cat.name
+                    ? "btnActive btnCategory"
+                    : "btnCategory"
+                }
+                onClick={() => handleClick(cat.name)}
+              >
+                {cat.name}
+              </button>
+            </div>
+          );
+        })
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
