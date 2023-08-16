@@ -2,9 +2,9 @@
 import "./globals.css";
 import "../styles/globals.css";
 import "../styles/pos-icon.css";
+import { Provider } from "react-redux";
+import { store } from "@/app/store";
 import type { Metadata } from "next";
-import axios from "axios";
-import { useEffect } from "react";
 import Navbar from "../app/components/main/Navbar";
 import { Poppins } from "next/font/google";
 const poppins = Poppins({
@@ -23,33 +23,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    const authApi = async () => {
-      await axios
-        .post("http://35.197.145.54:3000/auth/login", {
-          username: "nichapa.c",
-          password: "1234@Abcd",
-        })
-        .then((response) => {
-          if (response) {
-            const data = response.data;
-            localStorage.setItem("accessToken", data.accessToken);
-          }
-        });
-    };
-    authApi().catch((err) => {
-      console.error("An error occurred while fetching the data: ", err);
-    });
-    return () => {};
-  });
   return (
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
       </head>
       <body className={poppins.className}>
-        <Navbar></Navbar>
-        {children}
+        <Provider store={store}>
+          <Navbar></Navbar>
+          {children}
+        </Provider>
       </body>
     </html>
   );

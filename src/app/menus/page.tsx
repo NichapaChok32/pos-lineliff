@@ -1,21 +1,21 @@
 "use client";
-import axios from "axios";
 import { useState, useRef } from "react";
-import useSWR from "swr";
-import Categories from "../components/menus/categories";
+import { useGetMenulistsQuery } from "@/services/menulists";
+import CategoriesFilter from "../components/menus/categoriesFilter";
 import MenuLists from "../components/menus/menuLists";
 import "../../styles/components/Menus.scss";
+interface Props {
+  category: string;
+}
 
-const token = localStorage.getItem("accessToken");
-
-export default function Orders() {
-  const { data, error, isLoading } = useSWR(
-    "http://35.197.145.54:3000/item-masters",
-    (url: string) =>
-      axios
-        .get(url, { headers: { Authorization: "Bearer " + token } })
-        .then((r) => r.data)
-  );
+export default function Orders(props: Props) {
+  const { category } = props;
+  const { data, error, isLoading } = useGetMenulistsQuery("");
+  const menuLists = data;
+  const menusByCategories = () => {
+    if (category === "all") {
+    }
+  };
   const searchRef = useRef(
     null
   ) as React.MutableRefObject<HTMLInputElement | null>;
@@ -28,9 +28,9 @@ export default function Orders() {
       <div id="Filter">
         <header className="mainGrid">
           {isSearch ? (
-            <div className="formDiv relative">
+            <div className="relative formDiv">
               <i
-                className="pos-search h-6 w-6 iconSearch absolute"
+                className="absolute w-6 h-6 pos-search iconSearch"
                 aria-hidden="true"
               />
               <input
@@ -39,35 +39,41 @@ export default function Orders() {
                 className="txtSearch"
               />
               <i
-                className="pos-circle-xmark h-6 w-6 absolute iconClose"
+                className="absolute w-6 h-6 pos-circle-xmark iconClose"
                 aria-hidden="true"
                 onClick={() => handleClick(false)}
               />
             </div>
           ) : (
             <>
-              <div className="filterGrid relative">
+              <div className="relative filterGrid">
                 <i
-                  className="pos-search h-6 w-6 iconFilter"
+                  className="w-6 h-6 pos-search iconFilter"
                   aria-hidden="true"
                   onClick={() => handleClick(true)}
                 />
               </div>
-              <div className="filterGrid relative">
+              <div className="relative filterGrid">
                 <i
-                  className="pos-filter h-6 w-6 iconFilter"
+                  className="w-6 h-6 pos-filter iconFilter"
                   aria-hidden="true"
                 />
               </div>
-              <Categories></Categories>
+              <CategoriesFilter></CategoriesFilter>
             </>
           )}
         </header>
       </div>
       <div>
-        {data?.map((m: any) => {
-          return <MenuLists item={m} key={m.id}></MenuLists>;
-        })}
+        {Array.isArray(menuLists) ? (
+          menuLists?.map((m: any) => {
+            return (
+              <MenuLists item={m} key={m.id} category={category}></MenuLists>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
