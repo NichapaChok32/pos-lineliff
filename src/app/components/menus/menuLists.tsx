@@ -10,15 +10,15 @@ interface Props {
 export default function MenuLists(props: Props) {
   const { item } = props;
 
-  const calculatePriceVat = (price: number, vat: number) => {
-    const percent = vat / 100;
-    const diff = price * percent;
-    return price + diff;
-  };
+  // const calculatePriceVat = (price: number, vat: number) => {
+  //   const percent = vat / 100;
+  //   const diff = price * percent;
+  //   return price + diff;
+  // };
 
   return (
     <div id="Menulists">
-      <div className="menuGrid">
+      <div className="w-full menuGrid">
         <div className="menuCols menuImgCol">
           <Image
             src="/food.png"
@@ -29,14 +29,12 @@ export default function MenuLists(props: Props) {
             priority
           />
         </div>
-        <div className="menuCols menuDescCol">
+        <div className="w-full menuCols">
           <label className="menuName">{item.name}</label>
           <p className="menuParagraph">{item.detail}</p>
           <div className="menuGrid menuPriceDiv">
             <div className="menuCols">
-              <label className="menuPrice">
-                {calculatePriceVat(item.price, item.vat)}
-              </label>
+              <label className="menuPrice">{item.price}</label>
             </div>
             <div className="menuCols">
               <button className="btnAddMenu">

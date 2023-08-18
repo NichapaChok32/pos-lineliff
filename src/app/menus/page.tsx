@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { useGetMenulistsQuery } from "@/services/menulists";
 import { MenuCategories } from "@/interfaces/menus/MenuCategories";
 import CategoriesFilter from "../components/menus/categoriesFilter";
+import Loading from "../components/main/Loading";
 import MenuLists from "../components/menus/menuLists";
 import "../../styles/components/Menus.scss";
 
@@ -31,9 +32,14 @@ export default function Orders() {
     null
   ) as React.MutableRefObject<HTMLInputElement | null>;
   const [isSearch, setIsSearch] = useState(false);
-  function handleClick(value: boolean) {
+  const handleClick = (value: boolean) => {
     setIsSearch(value);
-  }
+  };
+  const handleSearch = (event: any) => {
+    let menus;
+    menus = data.filter((m: any) => m.name.indexOf(event.target.value) > -1);
+    setMenuAll(menus);
+  };
   return (
     <div id="Menus">
       <div id="Filter">
@@ -48,6 +54,7 @@ export default function Orders() {
                 type="search"
                 placeholder="Search menu"
                 className="txtSearch"
+                onKeyUp={(event) => handleSearch(event)}
               />
               <i
                 className="absolute w-6 h-6 pos-circle-xmark iconClose"
@@ -78,9 +85,13 @@ export default function Orders() {
         </header>
       </div>
       <div>
-        {menuAll?.map((m: any) => {
-          return <MenuLists item={m} key={m.id}></MenuLists>;
-        })}
+        {isLoading && !Array.isArray(menuAll) ? (
+          <Loading isLoading={isLoading}></Loading>
+        ) : (
+          menuAll?.map((m: any) => {
+            return <MenuLists item={m} key={m.id}></MenuLists>;
+          })
+        )}
       </div>
     </div>
   );
