@@ -33,12 +33,19 @@ export default function Orders() {
   ) as React.MutableRefObject<HTMLInputElement | null>;
   const [isSearch, setIsSearch] = useState(false);
   const handleClick = (value: boolean) => {
+    if (!value) {
+      setMenuAll(data);
+    }
     setIsSearch(value);
   };
   const handleSearch = (event: any) => {
-    let menus;
-    menus = data.filter((m: any) => m.name.indexOf(event.target.value) > -1);
-    setMenuAll(menus);
+    if (event.target.value) {
+      let menus;
+      menus = data.filter((m: any) => m.name.indexOf(event.target.value) > -1);
+      setMenuAll(menus);
+    } else {
+      setMenuAll(data);
+    }
   };
   return (
     <div id="Menus">
