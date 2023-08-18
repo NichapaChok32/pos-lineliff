@@ -23,7 +23,7 @@ export default function CategoriesFilter({ onCategoryChange }: Props) {
     onCategoryChange?.(value);
   }
   return (
-    <div className="flex items-center p-0 overflow-hidden overflow-x-scroll min-h-fit gap-x-2">
+    <div className="flex items-center p-0 overflow-hidden overflow-x-scroll min-h-fit gap-x-2 categoriesFilter">
       <div className="min-w-fit">
         <button
           key={"all"}
