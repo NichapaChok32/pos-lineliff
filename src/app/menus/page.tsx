@@ -28,9 +28,6 @@ export default function Orders() {
       setMenuAll(data);
     }
   }, [data]);
-  const searchRef = useRef(
-    null
-  ) as React.MutableRefObject<HTMLInputElement | null>;
   const [isSearch, setIsSearch] = useState(false);
   const handleClick = (value: boolean) => {
     if (!value) {
