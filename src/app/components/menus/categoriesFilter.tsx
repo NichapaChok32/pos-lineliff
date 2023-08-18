@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import "../../../styles/components/Categories.scss";
 import { useEffect, useState } from "react";
 import type { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,19 +23,21 @@ export default function CategoriesFilter({ onCategoryChange }: Props) {
     onCategoryChange?.(value);
   }
   return (
-    <div id="Categories">
-      <div className="categoriesGrid">
+    <div className="flex items-center p-0 overflow-hidden overflow-x-scroll min-h-fit gap-x-2">
+      <div className="min-w-fit">
         <button
           key={"all"}
           className={
-            category === "all" ? "btnActive btnCategory" : "btnCategory"
+            category === "all"
+              ? "min-w-fit max-h-[46px] rounded-2xl py-2 px-5 text-black border border-solid font-sans text-[14px] font-semibold leading-[21px] capitalize flex items-center border-[#ea8063] bg-salmon-transprent"
+              : "min-w-fit max-h-[46px] rounded-2xl py-2 px-5 text-black border border-solid font-sans text-[14px] font-semibold leading-[21px] capitalize flex items-center border-[#ededed]"
           }
           onClick={() => handleClick("all")}
         >
           <Image
             src="/all.svg"
             alt="Category All"
-            className="all"
+            className="mr-2"
             width={30}
             height={30}
             priority
@@ -47,12 +48,12 @@ export default function CategoriesFilter({ onCategoryChange }: Props) {
       {!isLoading && data ? (
         data?.map((cat: Categories, index: number) => {
           return (
-            <div key={index} className="categoriesGrid">
+            <div key={index} className="min-w-fit">
               <button
                 className={
                   category === cat.name
-                    ? "btnActive btnCategory"
-                    : "btnCategory"
+                    ? "min-w-fit max-h-[46px] rounded-2xl py-2 px-5 text-black border border-solid font-sans text-[14px] font-semibold leading-[21px] capitalize flex items-center border-[#ea8063] bg-[rgba(234, 128, 99, 0.1)]"
+                    : "min-w-fit max-h-[46px] rounded-2xl py-2 px-5 text-black border border-solid font-sans text-[14px] font-semibold leading-[21px] capitalize flex items-center border-[#ededed]"
                 }
                 onClick={() => handleClick(cat.name)}
               >

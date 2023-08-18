@@ -5,7 +5,6 @@ import { MenuCategories } from "@/interfaces/menus/MenuCategories";
 import CategoriesFilter from "../components/menus/categoriesFilter";
 import Loading from "../components/main/Loading";
 import MenuLists from "../components/menus/menuLists";
-import "../../styles/components/Menus.scss";
 
 export default function Orders() {
   const [category, setCategoryType] = useState("all");
@@ -45,39 +44,39 @@ export default function Orders() {
     }
   };
   return (
-    <div id="Menus">
-      <div id="Filter">
-        <header className="mainGrid">
+    <div>
+      <div className="overflow-hidden">
+        <header className="flex p-4 flex-nowrap gap-x-4">
           {isSearch ? (
-            <div className="relative formDiv">
+            <div className="relative w-full">
               <i
-                className="absolute w-6 h-6 pos-search iconSearch"
+                className="absolute w-6 h-6 pos-search top-[10px] left-4 text-[24px] leading-[24px] text-[#92929d]"
                 aria-hidden="true"
               />
               <input
                 type="search"
                 placeholder="Search menu"
-                className="txtSearch"
+                className="w-full h-[46px] px-12 py-[7px] rounded-lg border border-solid border-[#ea8063] outline-offset-0"
                 onKeyUp={(event) => handleSearch(event)}
               />
               <i
-                className="absolute w-6 h-6 pos-circle-xmark iconClose"
+                className="absolute w-6 h-6 pos-circle-xmark top-[12px] right-4 text-[24px] leading-[24px] text-[#92929d]"
                 aria-hidden="true"
                 onClick={() => handleClick(false)}
               />
             </div>
           ) : (
             <>
-              <div className="relative filterGrid">
+              <div className="relative flex items-center p-0 gap-x-2 min-w-fit">
                 <i
-                  className="w-6 h-6 pos-search iconFilter"
+                  className="w-6 h-6 pos-search text-[24px] leading-[24px] text-[#171725]"
                   aria-hidden="true"
                   onClick={() => handleClick(true)}
                 />
               </div>
-              <div className="relative filterGrid">
+              <div className="relative flex items-center p-0 gap-x-2 min-w-fit">
                 <i
-                  className="w-6 h-6 pos-filter iconFilter"
+                  className="w-6 h-6 pos-filter text-[24px] leading-[24px] text-[#171725]"
                   aria-hidden="true"
                 />
               </div>

@@ -17,28 +17,34 @@ export default function MenuLists(props: Props) {
   // };
 
   return (
-    <div id="Menulists">
-      <div className="w-full menuGrid">
-        <div className="menuCols menuImgCol">
+    <div className="px-4 py-3">
+      <div className="w-full flex gap-x-[10px] min-h-[100px]">
+        <div className="min-w-[100px] min-h-[100px]">
           <Image
             src="/food.png"
             alt="Food"
-            className="foodImg"
+            className="rounded-lg"
             width={100}
             height={100}
             priority
           />
         </div>
-        <div className="w-full menuCols">
-          <label className="menuName">{item.name}</label>
-          <p className="menuParagraph">{item.detail}</p>
-          <div className="menuGrid menuPriceDiv">
-            <div className="menuCols">
-              <label className="menuPrice">{item.price}</label>
+        <div className="w-full">
+          <label className="text-[16px] font-semibold leading-[24px] mb-1">
+            {item.name}
+          </label>
+          <p className="overflow-hidden text-ellipsis min-w-[240px] text-[#92929d] text-[12px] font-normal leading-[16px] tracking-[0.48px] menuParagraph">
+            {item.detail}
+          </p>
+          <div className="flex gap-x-[10px] max-h-fit mt-[10px] justify-between items-center self-stretch">
+            <div>
+              <label className="text-[16px] font-semibold leading-[24px] text-[#0d998b]">
+                {item.price}
+              </label>
             </div>
-            <div className="menuCols">
-              <button className="btnAddMenu">
-                <i className="w-6 h-6 pos-add iconAdd" />
+            <div>
+              <button className="flex items-center text-center w-6 h-6 p-1 bg-[#ffdeca] rounded">
+                <i className="pos-add w-4 h-4 text-[16px] leading-[16px] text-[#ea8063]" />
               </button>
             </div>
           </div>

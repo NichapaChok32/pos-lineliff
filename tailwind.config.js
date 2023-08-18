@@ -18,6 +18,9 @@ module.exports = {
       fontFamily: {
         sans: ["Inter var", "poppins", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        "salmon-transprent": "rgba(234, 128, 99, 0.1)",
+      },
     },
   },
   plugins: [],
